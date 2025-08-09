@@ -156,3 +156,15 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 		}
 	}
 endif;
+
+function registrar_cpt_servicos() {
+	error_log('Função registrar_cpt_servicos foi chamada');
+    register_post_type('servicos', [
+        'label' => 'Serviços',
+        'public' => true,
+        'show_in_rest' => true,
+        'rewrite' => ['slug' => 'servicos'],
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+    ]);
+}
+add_action('init', 'registrar_cpt_servicos');
